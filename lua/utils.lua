@@ -58,3 +58,9 @@ function vmap(lhs, rhs)
     _base_map(Mode.VISUAL, lhs, rhs, false)
 end
 
+
+----------------
+
+function warn_module_import_fail(name)
+    print("Module " .. name .. " failed to load")
+end

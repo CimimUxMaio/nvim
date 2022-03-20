@@ -1,4 +1,4 @@
 require("utils")
 
 
-vim.cmd "colorscheme gotham256"
+vim.cmd "colorscheme gruvbox"
