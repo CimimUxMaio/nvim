@@ -36,6 +36,9 @@ Plug "windwp/nvim-autopairs"
 
 Plug ("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 
+Plug "numToStr/Comment.nvim"
+Plug "JoosepAlviste/nvim-ts-context-commentstring"
+
 
 vim.call("plug#end")
 
@@ -46,6 +49,7 @@ require("plugins.fzf")
 require("plugins.toggleterm")
 require("plugins.lualine")
 require("plugins.treesitter")
+require("plugins.comments")
 require("plugins.lsp")
 require("plugins.completion")
 require("plugins.autopairs")
