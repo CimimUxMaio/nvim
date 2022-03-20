@@ -34,14 +34,18 @@ Plug "nvim-lualine/lualine.nvim"
 
 Plug "windwp/nvim-autopairs"
 
+Plug ("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
+
 
 vim.call("plug#end")
+
 
 
 require("plugins.nerdtree")
 require("plugins.fzf")
 require("plugins.toggleterm")
 require("plugins.lualine")
+require("plugins.treesitter")
 require("plugins.lsp")
 require("plugins.completion")
 require("plugins.autopairs")
