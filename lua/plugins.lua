@@ -29,6 +29,9 @@ Plug "williamboman/nvim-lsp-installer"
 
 Plug "akinsho/toggleterm.nvim"
 
+Plug "nvim-lualine/lualine.nvim"
+Plug "kyazdani42/nvim-web-devicons"
+
 
 vim.call("plug#end")
 
@@ -36,6 +39,7 @@ vim.call("plug#end")
 require("plugins.nerdtree")
 require("plugins.fzf")
 require("plugins.toggleterm")
+require("plugins.lualine")
 require("plugins.lsp")
 require("plugins.completion")
 require("plugins.colorschemes")
