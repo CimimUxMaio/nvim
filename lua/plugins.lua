@@ -27,7 +27,7 @@ Plug "saadparwaiz1/cmp_luasnip"
 Plug "neovim/nvim-lspconfig"
 Plug "williamboman/nvim-lsp-installer"
 
-Plug "tpope/vim-fugitive"
+Plug "akinsho/toggleterm.nvim"
 
 
 vim.call("plug#end")
@@ -35,6 +35,7 @@ vim.call("plug#end")
 
 require("plugins.nerdtree")
 require("plugins.fzf")
+require("plugins.toggleterm")
 require("plugins.lsp")
 require("plugins.completion")
 require("plugins.colorschemes")
