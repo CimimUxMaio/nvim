@@ -8,9 +8,11 @@ vim.call("plug#begin", "~/.config/nvim/autoload/plugged")
 
 Plug "vimwiki/vimwiki"
 
-local fzf_opts = { dir = "~/.fzf" }
-fzf_opts["do"] = "./install --all"
-Plug ("junegunn/fzf", fzf_opts)
+-- local fzf_opts = { dir = "~/.fzf" }
+-- fzf_opts["do"] = "./install --all"
+-- Plug ("junegunn/fzf", fzf_opts)
+Plug "nvim-lua/plenary.nvim"  -- required by 'telescope'
+Plug "nvim-telescope/telescope.nvim"
 
 Plug "preservim/nerdtree"
 
@@ -36,8 +38,8 @@ Plug "windwp/nvim-autopairs"
 
 Plug ("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 
-Plug "numToStr/Comment.nvim"
 Plug "JoosepAlviste/nvim-ts-context-commentstring"
+Plug "numToStr/Comment.nvim"
 
 
 vim.call("plug#end")
@@ -45,7 +47,7 @@ vim.call("plug#end")
 
 
 require("plugins.nerdtree")
-require("plugins.fzf")
+require("plugins.telescope")
 require("plugins.toggleterm")
 require("plugins.lualine")
 require("plugins.treesitter")
