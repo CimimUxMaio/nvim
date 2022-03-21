@@ -1,66 +1,74 @@
-general = vim.o
-window = vim.wo
-buffer = vim.bo
-global = vim.g
-set = vim.opt
+
+local M = {}
 
 
-Mode = { NORMAL = "n", INSERT = "i", VISUAL = "v", ALL = "" }
-
-
+local Mode = { NORMAL = "n", INSERT = "i", VISUAL = "v", ALL = "" }
 
 local _base_noremap = function(mode, lhs, rhs, opts)
-    options = opts or {}
+    local options = opts or {}
     options.noremap = true
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 
 local _base_map = function(mode, lhs, rhs, opts)
-    options = opts or {}
+    local options = opts or {}
     options.noremap = false
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 
-function noremap(lhs, rhs, opts)
+function M.noremap(lhs, rhs, opts)
     _base_noremap(Mode.ALL, lhs, rhs, opts)
 end
 
-function map(lhs, rhs, opts)
+function M.map(lhs, rhs, opts)
     _base_map(Mode.ALL, lhs, rhs, opts)
 end
 
 
-function nnoremap(lhs, rhs, opts)
+function M.nnoremap(lhs, rhs, opts)
     _base_noremap(Mode.NORMAL, lhs, rhs, opts)
 end
 
-function nmap(lhs, rhs, opts)
+function M.nmap(lhs, rhs, opts)
     _base_map(Mode.NORMAL, lhs, rhs, opts)
 end
 
 
-function inoremap(lhs, rhs, opts)
+function M.inoremap(lhs, rhs, opts)
     _base_noremap(Mode.INSERT, lhs, rhs, opts)
 end
 
-function imap(lhs, rhs, opts)
+function M.imap(lhs, rhs, opts)
     _base_map(Mode.INSERT, lhs, rhs, opts)
 end
 
 
-function vnoremap(lhs, rhs, opts)
+function M.vnoremap(lhs, rhs, opts)
     _base_noremap(Mode.VISUAL, lhs, rhs, opts)
 end
 
-function vmap(lhs, rhs)
-    _base_map(Mode.VISUAL, lhs, rhs, false)
+function M.vmap(lhs, rhs, opts)
+    _base_map(Mode.VISUAL, lhs, rhs, opts)
 end
 
 
 ----------------
 
-function warn_module_import_fail(name)
-    print("Module " .. name .. " failed to load")
+function M.warn_module_import_fail(name)
+    print("dule " .. name .. " failed to load")
 end
+
+
+----------------
+
+M.Signs = {
+    hint = "",
+    info = "",
+    warning = "",
+    error = ""
+}
+
+
+return M

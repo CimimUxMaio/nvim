@@ -1,6 +1,8 @@
+local utils = require("utils")
+
 local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
-    warn_module_import_fail("nvim-treesitter.configs")
+    utils.warn_module_import_fail("nvim-treesitter.configs")
     return
 end
 

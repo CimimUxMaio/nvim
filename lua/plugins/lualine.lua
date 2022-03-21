@@ -1,8 +1,8 @@
-require("utils")
+local utils = require("utils")
 
 local status_ok, lualine = pcall(require, "lualine")
 if not status_ok then
-    warn_module_import_fail("lualine")
+    utils.warn_module_import_fail("lualine")
     return
 end
 

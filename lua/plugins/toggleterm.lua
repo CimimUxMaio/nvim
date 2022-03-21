@@ -1,8 +1,8 @@
-require("utils")
+local utils = require("utils")
 
 local status_ok, toggleterm = pcall(require, "toggleterm")
 if not status_ok then
-    warn_module_import_fail("toggleterm")
+    utils.warn_module_import_fail("toggleterm")
     return
 end
 

@@ -1,3 +1,3 @@
-require("utils")
+local utils = require("utils")
 
-nnoremap("<leader><leader>", "<cmd>Telescope find_files<CR>")
+utils.nnoremap("<leader><leader>", "<cmd>Telescope find_files<CR>")

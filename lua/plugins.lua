@@ -8,15 +8,15 @@ vim.call("plug#begin", "~/.config/nvim/autoload/plugged")
 
 Plug "vimwiki/vimwiki"
 
--- local fzf_opts = { dir = "~/.fzf" }
--- fzf_opts["do"] = "./install --all"
--- Plug ("junegunn/fzf", fzf_opts)
 Plug "nvim-lua/plenary.nvim"  -- required by 'telescope'
 Plug "nvim-telescope/telescope.nvim"
 
-Plug "preservim/nerdtree"
+
+Plug "kyazdani42/nvim-web-devicons"
+Plug "kyazdani42/nvim-tree.lua"
 
 Plug "rafi/awesome-vim-colorschemes"
+Plug "lunarvim/darkplus.nvim"
 
 Plug "hrsh7th/nvim-cmp"
 Plug "hrsh7th/cmp-buffer"
@@ -32,7 +32,6 @@ Plug "williamboman/nvim-lsp-installer"
 Plug "akinsho/toggleterm.nvim"
 
 Plug "nvim-lualine/lualine.nvim"
---Plug "kyazdani42/nvim-web-devicons"
 
 Plug "windwp/nvim-autopairs"
 
@@ -46,7 +45,7 @@ vim.call("plug#end")
 
 
 
-require("plugins.nerdtree")
+require("plugins.nvim-tree")
 require("plugins.telescope")
 require("plugins.toggleterm")
 require("plugins.lualine")

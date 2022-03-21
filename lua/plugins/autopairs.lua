@@ -1,6 +1,8 @@
+local utils = require("utils")
+
 local status_ok, autopairs = pcall(require, "nvim-autopairs")
 if not status_ok then
-    warn_module_import_fail("nvim-autopairs")
+    utils.warn_module_import_fail("nvim-autopairs")
     return
 end
 
@@ -8,7 +10,7 @@ end
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
-    warn_module_import_fail("cmp (from autopairs)")
+    utils.warn_module_import_fail("cmp (from autopairs)")
     return
 end
 

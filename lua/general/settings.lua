@@ -1,6 +1,10 @@
 require("utils")
 
 
+local set = vim.opt
+local global = vim.g
+
+
 set.mouse = "a"
 set.encoding = "UTF-8"
 set.foldmethod = "indent"

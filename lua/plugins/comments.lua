@@ -1,14 +1,14 @@
-require("utils")
+local utils = require("utils")
 
 local comment_ok, comment = pcall(require, "Comment")
 if not comment_ok then
-    warn_module_import_fail("Comment")
+    utils.warn_module_import_fail("Comment")
     return
 end
 
 local ctx_cstr_ok, _ = pcall(require, "ts_context_commentstring")
 if not ctx_cstr_ok then
-    warn_module_import_fail("ts_context_commentstring")
+    utils.warn_module_import_fail("ts_context_commentstring")
     return
 end
 

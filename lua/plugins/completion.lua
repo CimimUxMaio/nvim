@@ -1,9 +1,9 @@
-require("utils")
+local utils = require("utils")
 
 
 local cmp_status_ok, cmp = pcall(require, "cmp")
 if not cmp_status_ok then
-    warn_module_import_fail("cmp")
+    utils.warn_module_import_fail("cmp")
     return
 end
 
@@ -11,7 +11,7 @@ end
 
 local snip_status_ok, luasnip = pcall(require, "luasnip")
 if not snip_status_ok then
-    warn_module_import_fail("luasnip")
+    utils.warn_module_import_fail("luasnip")
     return
 end
 
@@ -82,6 +82,18 @@ local super_tab = function(fallback)
 end
 
 
+local inverse_super_tab = function(fallback)
+    if cmp.visible() then
+        cmp.select_prev_item()
+    elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+    else
+        fallback()
+    end
+end
+
+
+
 cmp.setup {
     snippet = {
         expand = function(args)
@@ -114,6 +126,8 @@ cmp.setup {
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
 
         ["<Tab>"] = cmp.mapping(super_tab, { "i", "s" }),
+
+        ["<S-Tab>"] = cmp.mapping(inverse_super_tab, { "i", "s" }),
 
         ["<C-k>"] = cmp.mapping.select_prev_item(),
         ["<C-j>"] = cmp.mapping.select_next_item()
