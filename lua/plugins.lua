@@ -43,6 +43,8 @@ Plug "romgrk/barbar.nvim"
 
 Plug "rcarriga/nvim-notify"
 
+Plug "lewis6991/gitsigns.nvim"
+
 
 vim.call("plug#end")
 
@@ -55,6 +57,7 @@ require("plugins.lualine")
 require("plugins.treesitter")
 require("plugins.barbar")
 require("plugins.notify")
+require("plugins.gitsigns")
 require("plugins.comments")
 require("plugins.lsp")
 require("plugins.completion")

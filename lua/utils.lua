@@ -57,7 +57,7 @@ end
 ----------------
 
 function M.warn_module_import_fail(name)
-    vim.notify("dule " .. name .. " failed to load", "warn")
+    vim.notify("Module " .. name .. " failed to load", "warn")
 end
 
 
