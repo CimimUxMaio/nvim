@@ -47,7 +47,7 @@ nvim_tree.setup {
             custom_only = false,
             list = {
                 { key = "s", action = "vsplit" },
-                { key = "t", action = "tabnew" },
+                { key = "hs", action = "split" },
             }
         }
     }
