@@ -53,7 +53,7 @@ nvim_tree.setup {
     }
 }
 
-utils.nnoremap("<leader><Tab>", ":NvimTreeToggle<CR>")
+utils.nnoremap("<leader><Tab>", ":NvimTreeToggle<CR>", { silent = true })
 
 
 
