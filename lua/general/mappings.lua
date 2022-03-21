@@ -1,9 +1,9 @@
 local utils = require("utils")
 
 
--- Moving between tabs
-utils.noremap("<S-l>", "gt")
-utils.noremap("<S-h>", "gT")
+---- Moving between tabs
+--utils.noremap("<S-l>", "gt")
+--utils.noremap("<S-h>", "gT")
 
 
 utils.nnoremap("<C-c>", "<Esc>")

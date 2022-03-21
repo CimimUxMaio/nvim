@@ -1,4 +1,3 @@
-
 local Plug = vim.fn["plug#"]
 
 
@@ -40,6 +39,8 @@ Plug ("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 Plug "JoosepAlviste/nvim-ts-context-commentstring"
 Plug "numToStr/Comment.nvim"
 
+Plug "romgrk/barbar.nvim"
+
 
 vim.call("plug#end")
 
@@ -50,6 +51,7 @@ require("plugins.telescope")
 require("plugins.toggleterm")
 require("plugins.lualine")
 require("plugins.treesitter")
+require("plugins.barbar")
 require("plugins.comments")
 require("plugins.lsp")
 require("plugins.completion")
