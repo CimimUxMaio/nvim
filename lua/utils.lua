@@ -57,17 +57,19 @@ end
 ----------------
 
 function M.warn_module_import_fail(name)
-    print("dule " .. name .. " failed to load")
+    vim.notify("dule " .. name .. " failed to load", "warn")
 end
 
 
 ----------------
 
 M.Signs = {
-    hint = "",
-    info = "",
-    warning = "",
-    error = ""
+    HINT = "",
+    INFO = "",
+    WARNING = "",
+    ERROR = "",
+    DEBUG = "",
+    TRACE = "✎"
 }
 
 

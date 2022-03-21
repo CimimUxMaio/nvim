@@ -41,6 +41,8 @@ Plug "numToStr/Comment.nvim"
 
 Plug "romgrk/barbar.nvim"
 
+Plug "rcarriga/nvim-notify"
+
 
 vim.call("plug#end")
 
@@ -52,6 +54,7 @@ require("plugins.toggleterm")
 require("plugins.lualine")
 require("plugins.treesitter")
 require("plugins.barbar")
+require("plugins.notify")
 require("plugins.comments")
 require("plugins.lsp")
 require("plugins.completion")
