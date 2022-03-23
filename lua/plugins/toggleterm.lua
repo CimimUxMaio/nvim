@@ -36,11 +36,15 @@ local keymap_opts = { noremap = true, silent = true }
 
 
 function _G.set_terminal_movement_keymaps(bufnr)
-    --vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], keymap_opts)
     vim.api.nvim_buf_set_keymap(bufnr, "t", "<C-h>", [[<C-\><C-n><C-W>h]], keymap_opts)
     vim.api.nvim_buf_set_keymap(bufnr, "t", "<C-j>", [[<C-\><C-n><C-W>j]], keymap_opts)
     vim.api.nvim_buf_set_keymap(bufnr, "t", "<C-k>", [[<C-\><C-n><C-W>k]], keymap_opts)
     vim.api.nvim_buf_set_keymap(bufnr, "t", "<C-l>", [[<C-\><C-n><C-W>l]], keymap_opts)
+end
+
+
+function _G.set_terminal_disable_keymap(bufnr)
+    vim.api.nvim_buf_set_keymap(bufnr, "t", "<esc>", [[<C-\><C-n>]], keymap_opts)
 end
 
 
@@ -56,6 +60,7 @@ local main_term = Terminal:new {
     hidden = true,
     direction = "horizontal",
     on_open = function(term)
+        set_terminal_disable_keymap(term.bufnr)
         set_terminal_movement_keymaps(term.bufnr)
         set_terminal_close_keymap(term.bufnr)
     end
@@ -74,6 +79,7 @@ local secondary_term = Terminal:new {
     hidden = true,
     direction = "float",
     on_open = function(term)
+        set_terminal_disable_keymap(term.bufnr)
         set_terminal_close_keymap(term.bufnr)
     end
 }
