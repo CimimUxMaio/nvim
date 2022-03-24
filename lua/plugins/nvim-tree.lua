@@ -48,6 +48,7 @@ nvim_tree.setup {
             list = {
                 { key = "s", action = "vsplit" },
                 { key = "hs", action = "split" },
+                { key = "cd", action = "cd" }
             }
         }
     }
