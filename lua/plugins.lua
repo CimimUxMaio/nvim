@@ -2,7 +2,9 @@ local Plug = vim.fn["plug#"]
 
 
 
-vim.call("plug#begin")
+local pluggedPath = vim.fn["stdpath"]("config") .. "/autoload/plugged"
+
+vim.call("plug#begin", pluggedPath)
 
 
 Plug "vimwiki/vimwiki"
