@@ -2,39 +2,51 @@
 
 Neovim installation:
 - _Ubuntu:_
-    ```
-    sudo add-apt-repository ppa:neovim-ppa/stable
-    sudo apt-get update
-    sudo apt-get install neovim
-    ```
+```
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt-get update
+sudo apt-get install neovim
+```
 - _Windows:_
     - `choco install neovim` (release)
     - `choco install neovim --pre` (pre-release)
 
 
 For copy and paste to work correctly:
-_Example Ubuntu:_
-`sudo apt install xsel`
-- See `:healthcheck`
+- _Ubuntu:_ `sudo apt install xsel`
+    - See `:healthcheck`
 
 
 Install 'Hack Nerd Font' for icons to display correctly:
 [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
 - Alternative (may take a while):
-    ```
-    git clone https://github.com/ryanoasis/nerd-fonts.git
-    ./install Hack
-    ```
+```
+git clone https://github.com/ryanoasis/nerd-fonts.git
+./install Hack
+```
 
 Install 'lazygit':
 - _Ubuntu:_
-    ```
-    sudo add-apt-repository ppa:lazygit-team/release
-    sudo apt-get update
-    sudo apt-get install lazygit
-    ```
+```
+sudo add-apt-repository ppa:lazygit-team/release
+sudo apt-get update
+sudo apt-get install lazygit
+```
 - _Windows:_ `choco install lazygit`
 - _Alternative:_ [Binaries](https://github.com/jesseduffield/lazygit/releases)
+
+
+Install vim-plug:
+- _Ubuntu:_
+```
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+```
+- _Windows:_
+```
+iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
+    ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
+```
 
 
 Other requirements:
