@@ -29,8 +29,9 @@ set.wildignore = {"*.docx", "*.jpg","*.png","*.gif", "*.pdf", "*.pyc", "*.exe", 
 set.clipboard = "unnamedplus"
 
 
-
+set.updatetime = 500  -- Refresh rate
 set.syntax = "on"
+
 
 
 global.mapleader = "¡"
