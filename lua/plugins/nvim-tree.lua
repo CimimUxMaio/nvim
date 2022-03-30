@@ -54,7 +54,8 @@ nvim_tree.setup {
     }
 }
 
-utils.nnoremap("<leader><Tab>", ":NvimTreeToggle<CR>", { silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader><Tab>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 
 
