@@ -47,11 +47,14 @@ Plug "rcarriga/nvim-notify"
 
 Plug "lewis6991/gitsigns.nvim"
 
+Plug "goolord/alpha-nvim"
+
 
 vim.call("plug#end")
 
 
 
+require("plugins.alpha")
 require("plugins.nvim-tree")
 require("plugins.telescope")
 require("plugins.toggleterm")
