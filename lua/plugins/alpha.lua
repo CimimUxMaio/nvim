@@ -1,8 +1,8 @@
 local utils = require "utils"
 local math = require "math"
-local ok, alpha = pcall(require, "alpha")
 
-if not ok then
+local alpha_ok, alpha = pcall(require, "alpha")
+if not alpha_ok then
     utils.warn_module_import_fail("alpha")
 end
 
@@ -72,6 +72,14 @@ local buttons = {
     create_button("", "Say hello", "msg", "<CMD>lua vim.notify('Hello')<CR>"),
     create_button("", "Say bye", "bye", "<CMD>lua vim.notify('Bye')<CR>"),
 }
+
+
+local function mru_files(limit)
+    local files = table.move(vim.v.oldfiles, 1, limit, 1, {})
+    return files
+end
+
+print(mru_files(5))
 
 
 local config = {}

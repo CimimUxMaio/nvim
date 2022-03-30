@@ -60,6 +60,22 @@ function M.warn_module_import_fail(name)
     vim.notify("Module " .. name .. " failed to load", "warn")
 end
 
+----------------
+
+function M.take(table, n)
+    return table.move(vim.v.oldfiles, 1, n, 1, {})
+end
+
+
+-- function M.map(table, func)
+--     local new_table = {}
+--     for i, v in ipairs(table) do
+--         new_table[i] = func(v)
+--     end
+--
+--     return new_table
+-- end
+
 
 ----------------
 
