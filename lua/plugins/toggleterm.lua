@@ -71,7 +71,7 @@ function _G.main_term_toggle()
 end
 
 vim.cmd("command -nargs=0 ToggleMainTerm lua main_term_toggle()")
-utils.nnoremap("|", ":ToggleMainTerm<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "|", ":ToggleMainTerm<CR>", keymap_opts)
 
 
 
@@ -89,7 +89,7 @@ function _G.secondary_term_toggle()
 end
 
 vim.cmd("command -nargs=0 ToggleSecondaryTerm lua secondary_term_toggle()")
-utils.nnoremap("<M-t>", ":ToggleSecondaryTerm<CR>", { silent = true })
+vim.api.nvim_set_keymap("n", "<M-t>", ":ToggleSecondaryTerm<CR>", keymap_opts)
 
 
 

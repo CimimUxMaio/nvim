@@ -1,12 +1,10 @@
-local utils = require("utils")
-
-
-
 -- See `github.com/romgrk/barbar.nvim` for mor usefull commands.
 
-utils.nnoremap("H", ":BufferPrevious<CR>")
-utils.nnoremap("L", ":BufferNext<CR>")
-utils.nnoremap("Q", ":BufferClose<CR>")
+local opts = { noremap = true, silent = true }
+
+vim.api.nvim_set_keymap("n", "H", ":BufferPrevious<CR>", opts)
+vim.api.nvim_set_keymap("n", "L", ":BufferNext<CR>", opts)
+vim.api.nvim_set_keymap("n", "Q", ":BufferClose<CR>", opts)
 
 
 
