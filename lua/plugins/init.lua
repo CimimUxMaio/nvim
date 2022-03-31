@@ -54,13 +54,13 @@ vim.call("plug#end")
 
 
 
-require("plugins.alpha")
 require("plugins.nvim-tree")
 require("plugins.telescope")
 require("plugins.toggleterm")
 require("plugins.lualine")
 require("plugins.treesitter")
 require("plugins.barbar")
+require("plugins.alpha")
 require("plugins.notify")
 require("plugins.gitsigns")
 require("plugins.comments")
