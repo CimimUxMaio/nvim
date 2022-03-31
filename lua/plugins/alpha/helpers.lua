@@ -27,7 +27,7 @@ function M.create_button(icon, description, shortcut, keybind, hl_opts)
         position = "center",
         shortcut = "[ " .. shortcut .. " ]",
         -- hl = "CursorLine",
-        cursor = 0,
+        cursor = #icon + 1,
         width = 80,
         align_shortcut = "right",
         hl_shortcut = "Keyword",
