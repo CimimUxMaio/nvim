@@ -12,29 +12,46 @@ function M.take(array, n)
 end
 
 
-function M.map(array, func)
+
+local function _base_map(get_pairs, array, func)
     local new_array = {}
-    for k, v in pairs(array) do
+    for k, v in get_pairs(array) do
         new_array[k] = func(v, k)
     end
 
     return new_array
 end
 
+function M.map(array, func)
+    return _base_map(pairs, array, func)
+end
 
-function M.any(array, condition)
+function M.imap(array, func)
+    return _base_map(ipairs, array, func)
+end
+
+
+local function _base_any(get_pairs, array, condition)
     local result = false
-    for _, v in pairs(array) do
+    for _, v in get_pairs(array) do
         result = condition(v)
         if result then break end
     end
     return result
 end
 
+function M.any(array, func)
+    return _base_any(pairs, array, func)
+end
 
-function M.filter(array, condition)
+function M.iany(array, func)
+    return _base_any(ipairs, array, func)
+end
+
+
+local function _base_filter(get_pairs, array, condition)
     local new_array = {}
-    for k, v in pairs(array) do
+    for k, v in get_pairs(array) do
         if condition(v) then
             new_array[k] = v
         end
@@ -43,17 +60,12 @@ function M.filter(array, condition)
     return new_array
 end
 
+function M.filter(array, func)
+    return _base_filter(pairs, array, func)
+end
 
-function M.map_filter(array, condition, func)
-    local i = 1
-    local new_array = {}
-    for j, v in ipairs(array) do
-        if condition(v) then
-            new_array[i] = func(v, j)
-            i = i + 1
-        end
-    end
-    return new_array
+function M.ifilter(array, func)
+    return _base_filter(ipairs, array, func)
 end
 
 
@@ -73,14 +85,44 @@ end
 
 ----------------
 
-M.Signs = {
-    HINT = "",
-    INFO = "",
-    WARNING = "",
-    ERROR = "",
-    DEBUG = "",
-    TRACE = "✎"
+M.icons = {
+    signs = {
+        Hint = "",
+        Info = "",
+        Warn = "",
+        Error = "",
+        Debug = "",
+        Trace = "✎"
+    },
+    kinds = {
+        Text = "",
+        Method = "m",
+        Function = "",
+        Constructor = "",
+        Field = "",
+        Variable = "",
+        Class = "",
+        Interface = "",
+        Module = "",
+        Property = "",
+        Unit = "",
+        Value = "",
+        Enum = "",
+        Keyword = "",
+        Snippet = "",
+        Color = "",
+        File = "",
+        Reference = "",
+        Folder = "",
+        EnumMember = "",
+        Constant = "",
+        Struct = "",
+        Event = "",
+        Operator = "",
+        TypeParameter = "",
+    },
 }
+
 
 ----------------
 

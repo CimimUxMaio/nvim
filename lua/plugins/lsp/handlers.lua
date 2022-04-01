@@ -2,13 +2,14 @@ local utils = require("utils")
 
 local M = {}
 
+local sign_icons = utils.icons.signs
 
 M.setup = function()
   local signs = {
-    { name = "DiagnosticSignError", text = utils.Signs.ERROR },
-    { name = "DiagnosticSignWarn", text = utils.Signs.WARNING },
-    { name = "DiagnosticSignHint", text = utils.Signs.HINT },
-    { name = "DiagnosticSignInfo", text = utils.Signs.INFO },
+    { name = "DiagnosticSignError", text = sign_icons.Error },
+    { name = "DiagnosticSignWarn", text = sign_icons.Warn },
+    { name = "DiagnosticSignHint", text = sign_icons.Hint },
+    { name = "DiagnosticSignInfo", text = sign_icons.Info },
   }
 
   for _, sign in ipairs(signs) do

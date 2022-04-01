@@ -8,7 +8,7 @@ end
 
 vim.notify = notify
 
-local signs = utils.Signs
+local signs = utils.icons.signs
 
 notify.setup({
   -- Animation style (see below for details)
@@ -40,12 +40,13 @@ notify.setup({
 
   -- Icons for the different levels
   icons = {
-    ERROR = signs.ERROR,
-    WARN = signs.WARNING,
-    INFO = signs.INFO,
-    DEBUG = signs.DEBUG,
-    TRACE = signs.TRACE,
-  },
+        INFO = signs.Info,
+        HINT = signs.Hint,
+        ERROR = signs.Error,
+        TRACE = signs.Trace,
+        WARN = signs.Warn,
+        DEBUG = signs.Debug
+    },
 })
 
 

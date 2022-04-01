@@ -6,6 +6,12 @@ if not icons_ok then
     return
 end
 
+local sm_ok, sm_utils = pcall(require, "session_manager.utils")
+if not sm_ok then
+    utils.warn_module_import_fail("session_manager.utils in alpha.lua")
+    return
+end
+
 
 
 local M = {}
@@ -22,13 +28,27 @@ function M.padding(val)
 end
 
 
+function M.make_layout(padding, items)
+    local padded_layout = { M.padding(padding) }
+    local padd_counter = 1
+    for p, item in ipairs(items) do
+        local new_position = p + padd_counter
+        padded_layout[new_position] = item
+        if p ~= #items then
+            padded_layout[new_position + 1] = M.padding(padding)
+            padd_counter = padd_counter + 1
+        end
+    end
+    return padded_layout
+end
+
+
 function M.create_button(icon, description, shortcut, keybind, hl_opts)
     local opts = {
         position = "center",
         shortcut = "[ " .. shortcut .. " ]",
-        -- hl = "CursorLine",
         cursor = #icon + 1,
-        width = 80,
+        width = 60,
         align_shortcut = "right",
         hl_shortcut = "Keyword",
         hl = hl_opts or {}
@@ -69,11 +89,11 @@ function M.mru_files(limit, ignore_patterns)
     local oldfiles = vim.v.oldfiles or {}
     local cwd = vim.fn.getcwd()
     local function is_valid(f)
-        return vim.fn.filereadable(f) and not utils.any(ignore_patterns, function(p) return f:match(p) or false end)
+        return vim.fn.filereadable(f) and not utils.iany(ignore_patterns, function(p) return f:match(p) or false end)
     end
-    local valid_files = utils.filter(oldfiles, is_valid)
+    local valid_files = utils.ifilter(oldfiles, is_valid)
     local mru = utils.take(valid_files, limit)
-    return utils.map(mru, function(f)
+    return utils.imap(mru, function(f)
         local format = vim.startswith(f, cwd) and ":." or ":~"
         return vim.fn.fnamemodify(f, format)
     end)
@@ -91,6 +111,49 @@ function M.file_button(shortcut, file)
         table.insert(hl_opts, { "Comment", #icon + 1, #icon + #file_name_start + 1 })
     end
     return M.create_button(icon, file, shortcut, "<cmd>e " .. file .. " <CR>", hl_opts)
+end
+
+
+function M.session_list()
+    return utils.imap(sm_utils.get_sessions(), function(s)
+        return s["filename"]
+    end)
+end
+
+
+function M.session_button(shortcut, session_filename)
+    local session_dirname = tostring(sm_utils.session_filename_to_dir(session_filename))
+    local session_description = vim.fn.fnamemodify(session_dirname, ":t:r")
+    return M.create_button(
+        "ﮛ",
+        session_description, shortcut,
+        "<cmd>:cd " .. session_dirname .. " | lua require('session_manager.utils').load_session('" .. session_filename .. "', false)<CR>"
+    )
+end
+
+
+function M.title(text)
+    return {
+        type = "text",
+        val = text,
+        opts = {
+            position = "center",
+            hl = "Title"
+        }
+    }
+end
+
+
+function M.titled_group(icon, title, items)
+    local full_title = icon .. " " .. title
+    return {
+        type = "group",
+        val = {
+            M.title(full_title),
+            M.padding(1),
+            { type = "group", val = items }
+        }
+    }
 end
 
 

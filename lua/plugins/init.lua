@@ -2,7 +2,7 @@ local Plug = vim.fn["plug#"]
 
 
 
-local pluggedPath = vim.fn["stdpath"]("config") .. "/autoload/plugged"
+local pluggedPath = vim.fn.stdpath("data") .. "/plugged/"
 
 vim.call("plug#begin", pluggedPath)
 
@@ -49,6 +49,10 @@ Plug "lewis6991/gitsigns.nvim"
 
 Plug "goolord/alpha-nvim"
 
+Plug "nvim-lua/plenary.nvim"
+
+Plug "Shatur/neovim-session-manager"
+
 
 vim.call("plug#end")
 
@@ -67,6 +71,7 @@ require("plugins.comments")
 require("plugins.lsp")
 require("plugins.completion")
 require("plugins.autopairs")
+require("plugins.session_manager")
 require("plugins.colorschemes")
 
 

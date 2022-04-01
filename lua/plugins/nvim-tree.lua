@@ -7,38 +7,38 @@ if not status_ok then
 end
 
 vim.g.nvim_tree_icons = {
-  default = "",
-  symlink = "",
-  git = {
-    unstaged = "",
-    staged = "S",
-    unmerged = "",
-    renamed = "➜",
-    deleted = "",
-    untracked = "U",
-    ignored = "◌",
-  },
-  folder = {
-    default = "",
-    open = "",
-    empty = "",
-    empty_open = "",
-    symlink = "",
-  },
+    default = "",
+    symlink = "",
+    git = {
+        unstaged = "",
+        staged = "S",
+        unmerged = "",
+        renamed = "➜",
+        deleted = "",
+        untracked = "U",
+        ignored = "◌",
+    },
+    folder = {
+        default = "",
+        open = "",
+        empty = "",
+        empty_open = "",
+        symlink = "",
+    },
 }
 
 
-local signs = utils.Signs
+local signs = utils.icons.signs
 
 -- Use all default plus some extras
 nvim_tree.setup {
     diagnostics = {
         enable=true,
         icons = {
-            hint = signs.HINT,
-            info = signs.INFO,
-            warning = signs.WARNING,
-            error = signs.ERROR
+            hint = signs.Hint,
+            info = signs.Info,
+            warning = signs.Warn,
+            error = signs.Error
         }
     },
 
