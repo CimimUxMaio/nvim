@@ -53,6 +53,8 @@ Plug "nvim-lua/plenary.nvim"
 
 Plug "Shatur/neovim-session-manager"
 
+Plug "stevearc/dressing.nvim"
+
 
 vim.call("plug#end")
 
@@ -60,6 +62,7 @@ vim.call("plug#end")
 
 require("plugins.nvim-tree")
 require("plugins.telescope")
+require("plugins.dressing")
 require("plugins.toggleterm")
 require("plugins.lualine")
 require("plugins.treesitter")

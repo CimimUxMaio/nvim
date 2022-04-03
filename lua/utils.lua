@@ -121,6 +121,9 @@ M.icons = {
         Operator = "",
         TypeParameter = "",
     },
+    languages = {
+        haskell = ""
+    }
 }
 
 

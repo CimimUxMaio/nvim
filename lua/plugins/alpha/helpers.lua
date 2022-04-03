@@ -29,15 +29,10 @@ end
 
 
 function M.make_layout(padding, items)
-    local padded_layout = { M.padding(padding) }
-    local padd_counter = 1
-    for p, item in ipairs(items) do
-        local new_position = p + padd_counter
-        padded_layout[new_position] = item
-        if p ~= #items then
-            padded_layout[new_position + 1] = M.padding(padding)
-            padd_counter = padd_counter + 1
-        end
+    local padded_layout = {}
+    for i=1, 2 * #items, 2 do
+        padded_layout[i] = M.padding(padding)
+        padded_layout[i + 1] = items[math.floor(i / 2)]
     end
     return padded_layout
 end
@@ -154,6 +149,35 @@ function M.titled_group(icon, title, items)
             { type = "group", val = items }
         }
     }
+end
+
+
+function M.create_project(how)
+    return function()
+        vim.ui.input({prompt = "Enter new project's name: "}, function(name)
+            how(name)
+            vim.cmd("cd " .. name)
+            vim.notify("Project created")
+        end)
+    end
+end
+
+
+
+ProjectBuilders = {
+    haskell_stack = M.create_project(function(name)
+        vim.cmd("!stack new " .. name)
+    end)
+}
+
+
+function M.create_project_button(icon, shortcut, builder_name)
+    return M.create_button(
+        icon,
+        "Start new " .. builder_name .. " project",
+        shortcut,
+        "<cmd>:lua ProjectBuilders['" .. builder_name .. "']()<cr>"
+    )
 end
 
 

@@ -46,8 +46,9 @@ local function mru(start, limit)
 end
 
 
-local function session_manager()
-    local session_buttons = utils.imap(helpers.session_list(), function(s, i)
+local function session_manager(limit)
+    local sessions = utils.take(helpers.session_list(), limit)
+    local session_buttons = utils.imap(sessions, function(s, i)
         return helpers.session_button("s" .. tostring(i), s)
     end)
 
@@ -55,17 +56,19 @@ local function session_manager()
 end
 
 
-local general_group = helpers.titled_group("", "General", {
+local language_icons = utils.icons.languages
 
+local general_group = helpers.titled_group("亮", "General", {
+    helpers.create_project_button(language_icons.haskell, "hs", "haskell_stack"),
 })
 
 
 local config = {}
 
-config.layout = helpers.make_layout(2, {
+config.layout = helpers.make_layout(1, {
     header,
     general_group,
-    session_manager(),
+    session_manager(3),
     mru(0, 5),
     footer
 })
