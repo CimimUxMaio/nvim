@@ -124,12 +124,17 @@ function M.file_button(shortcut, file_path)
         table.insert(hl_opts, { "Comment", #icon + 1, #icon + #file_name_start + 1 })
     end
 
-    local command = "e " .. file_path
 
+    local new_dir
     local file_session = M.get_file_session(file_path)
+
     if file_session ~= nil then
-        command = "cd " .. file_session.dir .. " | " .. command
+        new_dir = file_session.dir
+    else
+        new_dir = vim.fn.fnamemodify(file_path, ":p:h")  -- file root dir
     end
+
+    local command = "cd " .. new_dir .. " | e " .. file_path
     return M.create_button(icon, pretty_file, shortcut, "<cmd>" .. command .. " <CR>", hl_opts)
 end
 
