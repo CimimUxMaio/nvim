@@ -43,7 +43,7 @@ function M.create_button(icon, description, shortcut, keybind, hl_opts)
         position = "center",
         shortcut = "[ " .. shortcut .. " ]",
         cursor = #icon + 1,
-        width = 60,
+        width = 100,
         align_shortcut = "right",
         hl_shortcut = "Keyword",
         hl = hl_opts or {}
@@ -101,12 +101,13 @@ end
 
 function M.get_file_session(file_path)
     local sessions = M.session_list()
+
     local possible_sessions = utils.ifilter(sessions, function(s)
         return file_path:match("^" .. s.dir) ~= nil
     end)
 
     return utils.max_by(possible_sessions, function(s)
-        return #file_path:match("^" .. s.dir)
+        return #(file_path:match("^" .. s.dir))
     end)
 end
 
