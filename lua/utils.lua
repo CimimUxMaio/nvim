@@ -69,22 +69,10 @@ function M.ifilter(array, func)
 end
 
 
-function M.find(array, condition)
-    local result = nil
-    for i=1, #array, 1 do
-        if condition(array[i]) then
-            result = i
-            break
-        end
-    end
-    return result
-end
-
-
 function M.max_by(array, ponderation)
     local max = nil
-    for i=1, #array, 1 do
-        max = (max == nil or ponderation(array[i]) > max) and array[i] or max
+    for _, item in ipairs(array) do
+        max = (max == nil or ponderation(item) > ponderation(max)) and item or max
     end
     return max
 end
