@@ -46,7 +46,7 @@ nvim_tree.setup {
         mappings = {
             custom_only = false,
             list = {
-                { key = "s", action = "vsplit" },
+                { key = {"vs", "s"}, action = "vsplit" },
                 { key = "hs", action = "split" },
                 { key = "cd", action = "cd" }
             }
