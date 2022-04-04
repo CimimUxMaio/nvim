@@ -48,11 +48,18 @@ iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim |`
     ni "$(@($env:XDG_DATA_HOME, $env:LOCALAPPDATA)[$null -eq $env:XDG_DATA_HOME])/nvim-data/site/autoload/plug.vim" -Force
 ```
 
+Install 'ripgrep':
+- Ubuntu:
+```
+sudo apt-get ripgrep
+```
+
 
 Other requirements:
 - _Python 3_ and _pip_
     - `pip install neovim`
 - _node_ and _npm_
+    - `npm install -g neovim`
 - Use `:checkhealth` to check for more missing dependencies
 
 
