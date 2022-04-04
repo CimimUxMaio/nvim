@@ -82,47 +82,71 @@ end
 
 function M.mru_files(limit, ignore_patterns)
     local oldfiles = vim.v.oldfiles or {}
-    local cwd = vim.fn.getcwd()
     local function is_valid(f)
         return vim.fn.filereadable(f) and not utils.iany(ignore_patterns, function(p) return f:match(p) or false end)
     end
     local valid_files = utils.ifilter(oldfiles, is_valid)
     local mru = utils.take(valid_files, limit)
-    return utils.imap(mru, function(f)
-        local format = vim.startswith(f, cwd) and ":." or ":~"
-        return vim.fn.fnamemodify(f, format)
+    return mru
+end
+
+
+
+function M.file_pretty_path(file)
+    local cwd = vim.fn.getcwd()
+    local format = vim.startswith(file, cwd) and ":." or ":~"
+    return vim.fn.fnamemodify(file, format)
+end
+
+
+function M.get_file_session(file_path)
+    local sessions = M.session_list()
+    local possible_sessions = utils.ifilter(sessions, function(s)
+        return file_path:match("^" .. s.dir) ~= nil
+    end)
+
+    return utils.max_by(possible_sessions, function(s)
+        return #file_path:match("^" .. s.dir)
     end)
 end
 
 
-function M.file_button(shortcut, file)
-    local icon, icon_hl = M.get_icon(file)
+function M.file_button(shortcut, file_path)
+    local icon, icon_hl = M.get_icon(file_path)
     local hl_opts = {}
     if icon_hl then
         table.insert(hl_opts, { icon_hl, 0, #icon })
     end
-    local file_name_start = file:match(".*/")
+
+    local pretty_file = M.file_pretty_path(file_path)
+    local file_name_start = pretty_file:match(".*/")
     if file_name_start ~= nil then
         table.insert(hl_opts, { "Comment", #icon + 1, #icon + #file_name_start + 1 })
     end
-    return M.create_button(icon, file, shortcut, "<cmd>e " .. file .. " <CR>", hl_opts)
+
+    local command = "e " .. file_path
+
+    local file_session = M.get_file_session(file_path)
+    if file_session ~= nil then
+        command = "cd " .. file_session.dir .. " | " .. command
+    end
+    return M.create_button(icon, pretty_file, shortcut, "<cmd>" .. command .. " <CR>", hl_opts)
 end
 
 
 function M.session_list()
     return utils.imap(sm_utils.get_sessions(), function(s)
-        return s["filename"]
+        return { dir = s.dir.filename, filename = s.filename }
     end)
 end
 
 
-function M.session_button(shortcut, session_filename)
-    local session_dirname = tostring(sm_utils.session_filename_to_dir(session_filename))
-    local session_description = vim.fn.fnamemodify(session_dirname, ":t:r")
+function M.session_button(shortcut, session)
+    local session_description = vim.fn.fnamemodify(session.dir, ":t:r")
     return M.create_button(
         "ﮛ",
         session_description, shortcut,
-        "<cmd>:cd " .. session_dirname .. " | lua require('session_manager.utils').load_session('" .. session_filename .. "', false)<CR>"
+        "<cmd>:cd " .. session.dir .. " | lua require('session_manager.utils').load_session('" .. session.filename .. "', false)<CR>"
     )
 end
 

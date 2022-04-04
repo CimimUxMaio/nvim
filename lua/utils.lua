@@ -69,19 +69,25 @@ function M.ifilter(array, func)
 end
 
 
-function M.dump(o)
-    if type(o) == "table" then
-        local s = "{ "
-        for k, v in pairs(o) do
-            if type(k) ~= "number" then k = '"' .. k .. '"' end
-            s = s .. "[" .. k .. "] = " .. M.dump(v) .. ", "
+function M.find(array, condition)
+    local result = nil
+    for i=1, #array, 1 do
+        if condition(array[i]) then
+            result = i
+            break
         end
-        return s .. "} "
-    else
-        return tostring(o)
     end
+    return result
 end
 
+
+function M.max_by(array, ponderation)
+    local max = nil
+    for i=1, #array, 1 do
+        max = (max == nil or ponderation(array[i]) > max) and array[i] or max
+    end
+    return max
+end
 
 ----------------
 

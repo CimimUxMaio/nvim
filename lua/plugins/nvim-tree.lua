@@ -32,6 +32,7 @@ local signs = utils.icons.signs
 
 -- Use all default plus some extras
 nvim_tree.setup {
+    update_cwd = true,
     diagnostics = {
         enable=true,
         icons = {
