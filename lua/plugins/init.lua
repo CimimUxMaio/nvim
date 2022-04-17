@@ -57,6 +57,10 @@ Plug "stevearc/dressing.nvim"
 
 Plug "norcalli/nvim-colorizer.lua"
 
+Plug "windwp/nvim-ts-autotag"
+
+Plug "nvim-treesitter/nvim-treesitter-refactor"
+
 
 vim.call("plug#end")
 

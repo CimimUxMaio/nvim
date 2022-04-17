@@ -21,5 +21,18 @@ configs.setup {
 
     context_commentstring = {
         enable = true
+    },
+
+    autotag = {
+        enable = true
+    },
+
+    refactor = {
+        smart_rename = {
+            enable = true,
+            keymaps = {
+                smart_rename = "<leader>r"
+            }
+        }
     }
 }
