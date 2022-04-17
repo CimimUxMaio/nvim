@@ -27,6 +27,7 @@ set.wildmenu = true
 set.wildmode = {"list", "longest"}
 set.wildignore = {"*.docx", "*.jpg","*.png","*.gif", "*.pdf", "*.pyc", "*.exe", "*.flv", "*.img", "*.xlsx"}
 set.clipboard = "unnamedplus"
+set.termguicolors = true
 
 
 set.updatetime = 500  -- Refresh rate

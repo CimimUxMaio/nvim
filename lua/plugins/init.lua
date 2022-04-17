@@ -55,6 +55,8 @@ Plug "Shatur/neovim-session-manager"
 
 Plug "stevearc/dressing.nvim"
 
+Plug "norcalli/nvim-colorizer.lua"
+
 
 vim.call("plug#end")
 
@@ -69,6 +71,7 @@ require("plugins.treesitter")
 require("plugins.barbar")
 require("plugins.alpha")
 require("plugins.notify")
+require("plugins.nvim_colorizer")
 require("plugins.gitsigns")
 require("plugins.comments")
 require("plugins.lsp")
