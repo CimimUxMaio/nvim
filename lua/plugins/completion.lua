@@ -104,8 +104,8 @@ cmp.setup {
         ["<C-j>"] = cmp.mapping.select_next_item()
     },
 
-    documentation = {
-        border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    window = {
+        documentation = cmp.config.window.bordered(),
     },
 
     experimental = {
