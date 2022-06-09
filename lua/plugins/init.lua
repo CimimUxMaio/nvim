@@ -61,6 +61,10 @@ Plug "windwp/nvim-ts-autotag"
 
 Plug "nvim-treesitter/nvim-treesitter-refactor"
 
+Plug "kevinhwang91/nvim-hlslens"
+
+Plug "petertriho/nvim-scrollbar"
+
 
 vim.call("plug#end")
 
@@ -83,5 +87,7 @@ require("plugins.completion")
 require("plugins.autopairs")
 require("plugins.session_manager")
 require("plugins.colorschemes")
+require("plugins.hlslens")
+require("plugins.scrollbar")
 
 
