@@ -58,5 +58,7 @@ nvim_tree.setup {
 
 vim.api.nvim_set_keymap("n", "<leader><Tab>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
-
-
+-- Auto close NvimTree if it is the last buffer open at :q
+vim.cmd [[
+    autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+]]
