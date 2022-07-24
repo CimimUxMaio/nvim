@@ -6,26 +6,26 @@ if not status_ok then
     return
 end
 
-vim.g.nvim_tree_icons = {
-    default = "",
-    symlink = "",
-    git = {
-        unstaged = "",
-        staged = "S",
-        unmerged = "",
-        renamed = "➜",
-        deleted = "",
-        untracked = "U",
-        ignored = "◌",
-    },
-    folder = {
-        default = "",
-        open = "",
-        empty = "",
-        empty_open = "",
-        symlink = "",
-    },
-}
+-- vim.g.nvim_tree_icons = {
+--     default = "",
+--     symlink = "",
+--     git = {
+--         unstaged = "",
+--         staged = "S",
+--         unmerged = "",
+--         renamed = "➜",
+--         deleted = "",
+--         untracked = "U",
+--         ignored = "◌",
+--     },
+--     folder = {
+--         default = "",
+--         open = "",
+--         empty = "",
+--         empty_open = "",
+--         symlink = "",
+--     },
+-- }
 
 
 local signs = utils.icons.signs
@@ -50,6 +50,31 @@ nvim_tree.setup {
                 { key = {"vs", "s"}, action = "vsplit" },
                 { key = "hs", action = "split" },
                 { key = "cd", action = "cd" }
+            }
+        }
+    },
+
+    renderer = {
+        icons = {
+            glyphs = {
+                default = "",
+                symlink = "",
+                git = {
+                    unstaged = "",
+                    staged = "S",
+                    unmerged = "",
+                    renamed = "➜",
+                    deleted = "",
+                    untracked = "U",
+                    ignored = "◌",
+                },
+                folder = {
+                    default = "",
+                    open = "",
+                    empty = "",
+                    empty_open = "",
+                    symlink = "",
+                },
             }
         }
     }
